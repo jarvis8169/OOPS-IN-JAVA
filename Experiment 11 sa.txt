@@ -1,0 +1,54 @@
+Experiment 11
+Write a javascript program to take input from user and calculate arithmetic operation such
+as addition,subtraction,multiplication and division using button click event.
+<html>
+<body style="background-color:rgb(82, 156, 225);">
+<head>
+<center><h1>Simple Calculator using JavaScript</h1>
+</head>
+<form name="form1">
+Number 1: <input type="text" name="First"> <br>
+Number 2: <input type="text" name="Second"><br>
+Get result: <input type="text" name="Total"><br>
+<input type="button" value="ADD" onclick="addition();">
+<input type="button" value="SUBTRACT" onclick="substraction();">
+<input type="button" value="MULTIPLY" onclick="multiplication();">
+<input type="button" value="DIVIDE" onclick="division();">
+</form>
+<script>
+function addition() {
+let a = Number(document.form1.First.value);
+let b = Number(document.form1.Second.value);
+let c = a + b;
+document.form1.Total.value = c;
+}
+function substraction() {
+let a = Number(document.form1.First.value);
+let b = Number(document.form1.Second.value);
+let c = a - b;
+document.form1.Total.value = c;
+
+}
+function multiplication() {
+let a = Number(document.form1.First.value);
+let b = Number(document.form1.Second.value);
+let c = a * b;
+document.form1.Total.value = c;
+}
+function division() {
+let a = Number(document.form1.First.value);
+let b = Number(document.form1.Second.value);
+if (b !== 0) {
+let c = a / b;
+document.form1.Total.value = c;
+} else {
+document.form1.Total.value = "Cannot divide by zero";
+}
+}
+</script>
+</center>
+</body>
+</html>
+Output:
+
+

@@ -1,0 +1,567 @@
+Experiment 7
+Q) Program on polymorphism
+class Shape
+{
+Shape(double b, int h)
+{
+double areaoftri;
+areaoftri = (b * h) / 2;
+System.out.println("Area of triangle: " + areaoftri);
+}
+Shape(int r)
+{
+double areaofcir;
+areaofcir = 3.14 * r * r;
+System.out.println("Area of circle: " + areaofcir);
+}
+Shape(double s)
+{
+double areaofsqu;
+areaofsqu = s * s;
+System.out.println("Area of square: " + areaofsqu);
+}
+Shape(int l, int w)
+{
+double areaofrect;
+areaofrect = l * w;
+System.out.println("Area of rectangle: " + areaofrect);
+}
+public static void main(String args[])
+{
+Shape a = new Shape(6, 6);
+Shape b = new Shape(3);
+Shape c = new Shape(9);
+Shape d = new Shape(9, 3);
+}
+}
+
+Output:
+C:\Program Files\Java\jdk-22\bin>javac Shape.java
+C:\Program Files\Java\jdk-22\bin>java Shape
+Area of triangle: 18.0
+Area of circle: 28.26
+Area of square: 81.0
+Area of rectangle: 27.0
+C:\Program Files\Java\jdk-22\bin>
+
+Q) Write a Java program to create a base class Bank with method with interest_rate().
+Create two subclasses SBI and ICICI. Override the interest_rate() method to find out
+interest rate.
+class Bank {
+int interestRate() {
+return 2;
+}
+}
+class SBI extends Bank {
+int interestRate() {
+return 8;
+}
+}
+class Icici extends Bank {
+int interestRate() {
+return 7;
+}
+}
+class Test {
+public static void main(String[] args) {
+Bank b = new Bank();
+SBI s = new SBI();
+Icici i = new Icici();
+System.out.println("Bank rate of interest is " + b.interestRate());
+System.out.println("SBI rate of interest is " + s.interestRate());
+System.out.println("ICICI rate of interest is " + i.interestRate());
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac Test.java
+C:\Program Files\Java\jdk-22\bin>java Test
+Bank rate of interest is 2
+SBI rate of interest is 8
+ICICI rate of interest is 7
+C:\Program Files\Java\jdk-22\bin>
+
+Q) Write a program to create your own exception (user-defined exception) to accept age from the
+user and throw an exception if the age is negative.
+import java.util.Scanner;
+public class Demo1
+{
+static void checkAge()
+{
+int age;
+Scanner s = new Scanner(System.in);
+System.out.print("Enter the number you want to check:");
+age = s.nextInt();
+if (age < 0)
+{
+throw new ArithmeticException("Age cannot be Negative");
+}
+else
+{
+System.out.println("Welcome");
+}
+}
+public static void main(String[] args)
+{
+checkAge();
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac Demo1.java
+C:\Program Files\Java\jdk-22\bin>java Demo1
+Enter the number you want to check: 8
+Welcome
+C:\Program Files\Java\jdk-22\bin>javac Demo1.java
+C:\Program Files\Java\jdk-22\bin>java Demo1
+Enter the number you want to check: -9
+Exception in thread "main" java.lang.ArithmeticException: Age cannot be Negative
+at Demo1.checkAge(Demo1.java:9)
+at Demo1.main(Demo1.java:15)
+C:\Program Files\Java\jdk-22\bin>
+
+Q) Write a program to create your own exception (user-defined exception) to accept a number
+from the user and throw an exception if the number is not even.
+import java.util.Scanner;
+public class Main
+{
+static void checkEvenNumber()
+{
+int n;
+Scanner s = new Scanner(System.in);
+System.out.print("Enter the number you want to check: ");
+n = s.nextInt();
+if (n % 2 == 0)
+{
+throw new ArithmeticException("Even number");
+}
+else
+{
+System.out.println("Odd number");
+}
+}
+public static void main(String[] args)
+{
+checkEvenNumber();
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac Main.java
+C:\Program Files\Java\jdk-22\bin>java Main
+Enter the number you want to check: 11
+Odd number
+C:\Program Files\Java\jdk-22\bin>javac Main.java
+C:\Program Files\Java\jdk-22\bin>java Main
+Enter the number you want to check: 8
+Exception in thread "main" java.lang.ArithmeticException: Even number
+at Main.checkEvenNumber(Main.java:9)
+at Main.main(Main.java:15)
+C:\Program Files\Java\jdk-22\bin>
+
+Experiment 8
+1) Write a program to implement following Inheritance : Assume suitable methods.
+
+Class Name : Student
+
+Interface : Sports
+
+Member Variables :
+Rollno , Name
+
+Member Variables :
+Sport_wt = 5 , void show()
+
+Class Name : Result
+Member Variables :
+Marks1, marks2
+Total_marks,per
+
+2) Write a program to implement following Inheritance : Assume suitable methods.
+
+Class Name : Student
+
+Interface : Employee
+
+Member Variables :
+Rollno,name,void input(),void
+output
+
+Member Variable:
+B_salarary , HRA ,DA , void show()
+
+Class Name : Manager
+Member Variables : M_id,
+Totalsalary
+Void CalculateSalary()
+
+1) Write a program to implement following inheritance .
+import java.util.*;
+class Student {
+int rollno;
+String name;
+Student(int a, String b) {
+rollno = a;
+name = b;
+}
+}
+interface Sports {
+final int sport_wt = 3;
+void show();
+}
+class Result extends Student implements Sports {
+int mark1, mark2;
+double per;
+Result(int a, String b, int c, int d) {
+super(a, b);
+mark1 = c;
+mark2 = d;
+}
+void Calpercentage() {
+per = (mark1 + mark2) * 100 / 200;
+}
+public void show() {
+System.out.println("Name: " + name);
+System.out.println("Roll No: " + rollno);
+System.out.println("Percentage: " + per);
+System.out.println("Sports Weight: " + sport_wt);
+}
+}
+class Main {
+public static void main(String[] args) {
+// TODO: Auto-generated method stub
+Result ob = new Result(19, "Jay", 92, 96);
+ob.Calpercentage();
+ob.show();
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac Main.java
+C:\Program Files\Java\jdk-22\bin>java Main
+Name: Jay
+Roll No: 15
+Percentage: 92.0
+Sports Weight: 3
+C:\Program Files\Java\jdk-22\bin>
+
+2) Write a program to implement following inheritance .
+import java.util.Scanner;
+class Student {
+protected int rollNo;
+protected String name;
+void input() {
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter the Name: ");
+name = sc.next();
+System.out.print("Enter the Roll no.: ");
+rollNo = sc.nextInt();
+}
+void output() {
+System.out.println("\nName: " + name);
+System.out.println("\nRoll No: " + rollNo);
+}
+}
+interface Employee {
+double B_SALARY = 45000; // Base salary
+double HRA = 10000; // House Rent Allowance
+double DA = 4200; // Dearness Allowance
+void show();
+}
+class Manager extends Student implements Employee {
+int M_id = 8989;
+double totalSalary;
+void calculateSalary() {
+totalSalary = B_SALARY + HRA + DA;
+}
+public void show() {
+System.out.println("\nManager ID: " + M_id);
+System.out.println("\nTotal Salary: " + totalSalary);
+}
+}
+class Main {
+public static void main(String[] args) {
+Manager m = new Manager();
+m.input();
+m.output();
+m.calculateSalary();
+m.show();
+}
+
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac Main.java
+C:\Program Files\Java\jdk-22\bin>java Main
+Enter the Name: Sujay
+Enter the Roll no.: 8
+Name: Sujay
+Roll No: 8
+Manager ID: 5284
+Total Salary: 59200.0
+C:\Program Files\Java\jdk-22\bin>
+
+Experiment 9
+1 ) Write a program to create own exception to accept no from user and throw an exception if the
+number is not even.
+import java.util.*;
+class NotEvenException extends Exception
+{
+NotEvenException()
+{
+System.out.println("Number is not Even");
+}
+}
+class CheckEvenNumber
+{
+public static void main(String[] args)
+{
+int number;
+Scanner sc = new Scanner(System.in);
+try
+{
+System.out.println("Enter any Number:");
+number = sc.nextInt();
+if (number % 2 != 0)
+{
+throw new NotEvenException();
+}
+else
+{
+System.out.println("Number is Even");
+}
+}
+catch (Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac CheckEvenNumber.java
+C:\Program Files\Java\jdk-22\bin>java CheckEvenNumber
+Enter any Number:
+9
+Number is not Even
+C:\Program Files\Java\jdk-22\bin>
+
+2 ) Write a program to create own exception to accept no from user and throw an exception if the
+
+number is not even.
+import java.util.*;
+class NotPrimeException extends Exception
+{
+NotPrimeException()
+{
+System.out.println("Number is not Prime");
+}
+}
+class CheckPrimeNumber
+{
+public static void main(String[] args)
+{
+int number;
+Scanner sc = new Scanner(System.in);
+try
+{
+System.out.println("Enter any Number:");
+number = sc.nextInt();
+if (number <= 1 || !isPrime(number))
+{
+throw new NotPrimeException();
+}
+else
+{
+System.out.println("Number is Prime");
+}
+}
+catch (Exception e)
+{
+System.out.println(e);
+}
+}
+public static boolean isPrime(int num)
+{
+for (int i = 2; i <= num / 2; i++) // Checking up to num/2
+{
+if (num % i == 0)
+return false;
+}
+return true;
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac CheckPrimeNumber.java
+C:\Program Files\Java\jdk-22\bin>java CheckPrimeNumber
+Enter any Number:
+12
+Number is not Prime
+C:\Program Files\Java\jdk-22\bin>
+
+3 ) Write a program to create own exception to accept age from user and throw an exception if the
+age is negative.
+
+import java.util.*;
+class NegativeAgeException extends Exception
+{
+NegativeAgeException()
+{
+System.out.println("Age cannot be negative");
+}
+}
+class CheckAge
+{
+public static void main(String[] args)
+{
+int age;
+Scanner sc = new Scanner(System.in);
+try
+{
+System.out.println("Enter your age:");
+age = sc.nextInt();
+if (age < 0)
+{
+throw new NegativeAgeException();
+}
+else
+{
+System.out.println("Your age is: " + age);
+}
+}
+catch (Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac CheckAge.java
+C:\Program Files\Java\jdk-22\bin>java CheckAge
+Enter your age:
+-7
+Age cannot be negative
+C:\Program Files\Java\jdk-22\bin>
+
+4 ) Write a program to create own exception to accept string from user and throw an exception if
+
+the string is not starting with character ‘s’.
+
+import java.util.*;
+class StringDoesNotStartWithSException extends Exception
+{
+StringDoesNotStartWithSException()
+{
+System.out.println("String does not start with 'S' or 's'");
+}
+}
+class CheckString
+{
+public static void main(String[] args)
+{
+String inputString;
+Scanner sc = new Scanner(System.in);
+try
+{
+System.out.println("Enter a string:");
+inputString = sc.nextLine();
+if (inputString.isEmpty() || inputString.startsWith("S") || inputString.startsWith("s"))
+{
+System.out.println("String starts with 'S' or 's'");
+}
+else
+{
+throw new StringDoesNotStartWithSException();
+}
+}
+catch (Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac CheckString.java
+C:\Program Files\Java\jdk-22\bin>java CheckString
+Enter a string:
+nutan
+String does not start with 'S' or 's'
+C:\Program Files\Java\jdk-22\bin>
+
+5) Write a program to create own exception to accept password from user and throw an
+“Authentication Failure” exception if the password is incorrect.
+import java.util.*;
+class AuthenticationFailureException extends Exception
+{
+AuthenticationFailureException()
+{
+System.out.println("Authentication Failure: Incorrect Password!");
+}
+}
+class CheckPassword
+{
+public static void main(String[] args)
+{
+int correctPassword =254784; // Predefined correct password
+int inputPassword;
+Scanner sc = new Scanner(System.in);
+try
+{
+System.out.println("Enter Password:");
+inputPassword = sc.nextInt();
+if (inputPassword == correctPassword)
+{
+System.out.println("Authentication Successful");
+}
+else
+{
+throw new AuthenticationFailureException();
+}
+}
+catch (Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+Output :
+C:\Program Files\Java\jdk-22\bin>javac CheckPassword.java
+C:\Program Files\Java\jdk-22\bin>java CheckPassword
+Enter Password:
+154958
+Authentication Failure: Incorrect Password!
+C:\Program Files\Java\jdk-22\bin>
+
+Experiment 10
+Write a java program that calculate area of circle using creating and accessing paclage.
+a) Creation of a simple package
+package create;
+public class circle
+{
+public int radius=6;
+public double calarea()
+{
+Return 3.14* radius * radius;
+}
+}
+
+b) Accessing a package
+package access;
+import create.*;
+public class Area
+{
+public static void main(String [] args)
+{
+Circle c = new circle();
+Double area = c.calarea();
+System.out.println(“Area of circle is :” +area);
+}
+}
+Output :
+Area of circle is : 113.04
+
+

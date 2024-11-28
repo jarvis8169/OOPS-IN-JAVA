@@ -1,0 +1,138 @@
+Experiment 12
+1) Write a javascript program to take input from user and check the number is prime or
+not.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Check if a Number is Prime or Not using JavaScript</title>
+<script type="text/javascript">
+function check(p) {
+if (p < 2) return false;
+if (p === 2) return true;
+if (p % 2 === 0) return false;
+
+for (let i = 3; i <= Math.sqrt(p); i += 2) {
+if (p % i === 0) {
+return false;
+}
+}
+return true;
+}
+function p() {
+var n = document.myform.n.value;
+n = parseInt(n);
+
+if (isNaN(n) || n <= 0) {
+alert("Please enter a valid number.");
+return;
+}
+if (check(n)) {
+alert(n + " is prime");
+} else {
+alert(n + " is not prime");
+}
+}
+</script>
+</head>
+<body>
+<center>
+<h4>Check if a number is prime or not</h4>
+
+<hr color="Green">
+<form name="myform">
+Enter the number:
+<input type="text" name="n" value="">
+<br><br>
+<input type="button" value="Check" onClick="p()">
+<br>
+</form>
+</center>
+</body>
+</html>
+
+Output :
+
+2) Write a java script program to take input from user and check the number is Even or Odd.
+<html>
+<head>
+<script type="text/javascript">
+function odd_even(){
+var no;
+no = Number(document.getElementById("no_input").value);
+if (isNaN(no)) {
+alert("Please enter a valid number.");
+} else if (no % 2 == 0) {
+alert("The number is Even Number");
+} else {
+alert("The number is Odd Number");
+}
+}
+</script>
+</head>
+<body>
+Enter Any Number: <input id="no_input" type="text"><br/>
+<button onclick="odd_even()">Click me</button>
+</body>
+</html>
+
+Output :
+
+Experiment 13
+Write a program on javascript Validation using object function.
+
+<html>
+<body>
+<script type="text/javascript">
+function validate() {
+var name = document.f1.name.value;
+var passwordlength = document.f1.password.value.length;
+var status = false;
+if (name == "") {
+document.getElementById("namelocation").innerHTML = "Please enter your name";
+status = false;
+} else {
+document.getElementById("namelocation").innerHTML = "";
+status = true;
+}
+if (passwordlength < 6) {
+document.getElementById("passwordlocation").innerHTML = "Password must be greater than 6
+characters";
+status = false;
+} else {
+document.getElementById("passwordlocation").innerHTML = "";
+}
+if (status) {
+document.getElementById("successMessage").innerHTML = "Successfully validated!";
+return false; // Prevent the form from submitting (no redirect)
+}
+return status;
+}
+</script>
+<form name="f1" onsubmit="return validate()">
+<table>
+<tr>
+<td>Name:</td>
+<td><input type="text" name="name"/>
+<span id="namelocation" style="color:red"></span>
+</td>
+</tr>
+<tr>
+<td>Password:</td>
+<td><input type="password" name="password"/>
+<span id="passwordlocation" style="color:red"></span>
+</td>
+</tr>
+
+<tr>
+<td colspan="2"><input type="submit" value="Register"/> </td>
+</tr>
+</table>
+</form>
+<div id="successMessage" style="color:green; font-weight:bold; margin-top: 20px;"></div>
+</body>
+</html>
+
+Output :
+
+
